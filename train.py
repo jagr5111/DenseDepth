@@ -43,7 +43,7 @@ if args.data == 'nyu': train_generator, test_generator = get_nyu_train_test_data
 if args.data == 'unreal': train_generator, test_generator = get_unreal_train_test_data( args.bs )
 
 # Training session details
-runID = str(int(time.time())) + '-n' + str(10000) + '-e' + str(args.epochs) + '-bs' + str(args.bs) + '-lr' + str(args.lr) + '-' + args.name
+runID = str(int(time.time())) + '-n' + str(len(train_generator)) + '-e' + str(args.epochs) + '-bs' + str(args.bs) + '-lr' + str(args.lr) + '-' + args.name
 outputPath = './models/'
 runPath = outputPath + runID
 pathlib.Path(runPath).mkdir(parents=True, exist_ok=True)
@@ -84,7 +84,7 @@ if args.data == 'nyu': callbacks = get_nyu_callbacks(model, basemodel, train_gen
 if args.data == 'unreal': callbacks = get_nyu_callbacks(model, basemodel, train_generator, test_generator, load_test_data() if args.full else None , runPath)
 
 # Start training
-model.fit_generator(10000, callbacks=callbacks, validation_data=test_generator, epochs=args.epochs, shuffle=True)
+model.fit_generator(train_generator, callbacks=callbacks, validation_data=test_generator, epochs=args.epochs, shuffle=True)
 
 # Save the final trained model:
 basemodel.save(runPath + '/model.h5')
