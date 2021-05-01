@@ -41,7 +41,7 @@ model = create_model( existing=args.checkpoint )
 # Data loaders
 if args.data == 'nyu': train_generator, test_generator = get_nyu_train_test_data( args.bs )
 if args.data == 'unreal': train_generator, test_generator = get_unreal_train_test_data( args.bs )
-print("len(train_generator)")
+print(len(train_generator))
 # Training session details
 runID = str(int(time.time())) + '-n' + str(len(train_generator)) + '-e' + str(args.epochs) + '-bs' + str(args.bs) + '-lr' + str(args.lr) + '-' + args.name
 outputPath = './models/'
