@@ -43,7 +43,7 @@ if args.data == 'nyu': train_generator, test_generator = get_nyu_train_test_data
 if args.data == 'unreal': train_generator, test_generator = get_unreal_train_test_data( args.bs )
 
 # Training session details
-runID = str(int(time.time())) + '-n' + str(len(train_generator)) + '-e' + str(args.epochs) + '-bs' + str(args.bs) + '-lr' + str(args.lr) + '-' + args.name
+runID = str(int(time.time())) + '-n' + str(len(100)) + '-e' + str(args.epochs) + '-bs' + str(args.bs) + '-lr' + str(args.lr) + '-' + args.name
 outputPath = './models/'
 runPath = outputPath + runID
 pathlib.Path(runPath).mkdir(parents=True, exist_ok=True)
